@@ -1,8 +1,15 @@
 html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
