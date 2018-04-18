@@ -1,5 +1,5 @@
 {
-  "name": "rollup-starter",
+  "name": "rollup-starter-threejs",
   "version": "1.0.0",
   "description": "rollup starter kit",
   "main": "index.html",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beginor/rollup-starter.git"
+    "url": "git+https://github.com/beginor/rollup-starter-threejs.git"
   },
   "keywords": [
     "rollup",
@@ -24,9 +24,9 @@
   "author": "beginor <beginor@qq.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/beginor/rollup-starter/issues"
+    "url": "https://github.com/beginor/rollup-starter-threejs/issues"
   },
-  "homepage": "https://github.com/beginor/rollup-starter#readme",
+  "homepage": "https://github.com/beginor/rollup-starter-threejs#readme",
   "devDependencies": {
     "concurrently": "^3.5.1",
     "lite-server": "^2.3.0",

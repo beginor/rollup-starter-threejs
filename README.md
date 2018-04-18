@@ -1,1 +1,1 @@
-# Rollup starter project with TypeScript!
+# Rollup starter project with three.js!
