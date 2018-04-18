@@ -21,7 +21,7 @@ export class App {
             0.1,
             1000
         );
-        this.renderer = new WebGLRenderer();
+        this.renderer = new WebGLRenderer({ antialias: true });
         this.renderer.setSize(
             this.container.clientWidth,
             this.container.clientHeight
