@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/beginor/rollup-starter-threejs#readme",
   "dependencies": {
-    "three": "^0.91.0"
+    "three": "^0.96.0"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
@@ -41,6 +41,6 @@
     "rollup-plugin-typescript2": "0.17.0",
     "rollup-plugin-uglify": "^6.0.0",
     "typescript": "^2.9.2",
-    "@types/three": "^0.91.8"
+    "@types/three": "^0.92.23"
   }
 }
