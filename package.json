@@ -31,16 +31,15 @@
     "three": "^0.97.0"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1",
-    "browser-sync": "^2.26.3",
-    "rollup": "^0.66.1",
-    "rollup-plugin-alias": "^1.4.0",
-    "rollup-plugin-commonjs": "^9.1.6",
-    "rollup-plugin-css-only": "^0.4.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-typescript2": "0.17.0",
-    "rollup-plugin-uglify": "^6.0.0",
-    "typescript": "^3.1.0",
-    "@types/three": "^0.93.5"
+    "concurrently": "^5.0.0",
+    "browser-sync": "^2.26.7",
+    "rollup": "^1.25.1",
+    "rollup-plugin-alias": "^2.2.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "rollup-plugin-uglify": "^6.0.3",
+    "typescript": "^3.6.4"
   }
 }
