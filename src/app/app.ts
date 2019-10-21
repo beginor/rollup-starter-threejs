@@ -1,6 +1,6 @@
 import {
     Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry,
-    MeshNormalMaterial, Mesh
+    MeshNormalMaterial, Mesh, MeshBasicMaterial, TextureLoader, MeshStandardMaterial, MeshPhongMaterial
 } from 'three';
 
 export class App {
@@ -21,15 +21,19 @@ export class App {
             0.1,
             1000
         );
-        this.renderer = new WebGLRenderer({ antialias: true });
+        this.renderer = new WebGLRenderer({ antialias: false, alpha: true });
         this.renderer.setSize(
             this.container.clientWidth,
             this.container.clientHeight
         )
         this.container.appendChild(this.renderer.domElement);
-
+        var texture = new TextureLoader().load('./happy_santaclaus.png');
         var geometry = new BoxGeometry(1, 1, 1);
-        var material = new MeshNormalMaterial();
+        var material = new MeshBasicMaterial({
+            map: texture,
+            opacity: 0.9,
+            transparent: true
+        });
         this.cube = new Mesh(geometry, material);
         this.scene.add(this.cube);
 
