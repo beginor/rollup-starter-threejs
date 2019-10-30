@@ -1,6 +1,6 @@
 import {
     Scene, PerspectiveCamera, WebGLRenderer, Color, Points, Geometry, Vector3,
-    Quaternion, PointsMaterial
+    Quaternion, PointsMaterial, SphereGeometry, MeshBasicMaterial, Mesh, TextureLoader
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -13,7 +13,7 @@ export class App {
 
     points: Points;
     speeds: Quaternion[] = [];
-    MaxPoints = 1000;
+    MaxPoints = 100000;
 
     constructor(private container: HTMLElement) {
     }
@@ -42,14 +42,51 @@ export class App {
             this.container.clientHeight
         )
         this.container.appendChild(this.renderer.domElement);
+        // add sphere
+        this.createEarth();
+        this.addPoints();
+    }
+
+    private update(time: number): void {
+        this.updatePoints();
+    }
+
+    private animate(time: number): void {
+        const callback = this.animate.bind(this);
+        requestAnimationFrame(callback);
+        this.update(time);
+        this.renderer.render(this.scene, this.camera);
+    }
+
+    public run(): void {
+        this.init();
+        this.animate(0);
+    }
+
+    private createEarth() {
+        const sphereGeometry = new SphereGeometry(1.99, 360, 180);
+        const sphereMaterial = new MeshBasicMaterial({
+            map: new TextureLoader().load('land_ocean_ice_2048.jpg'),
+            wireframe: false,
+            wireframeLinewidth: 1
+        });
+        const sphere = new Mesh(sphereGeometry, sphereMaterial);
+        this.scene.add(sphere);
+    }
+
+    private addPoints(): void {
         // points geometry;
         const geometry = new Geometry();
         const yaxis = new Vector3(0, 1, 0);
+        let i = 0;
         while (geometry.vertices.length < this.MaxPoints) {
-            const x = Math.random() * 2 - 1;
-            const y = Math.random() * 2 - 1;
-            const z = Math.random() * 2 - 1;
-            if (x * x + y * y + z * z < 1) {
+            const x = Math.random() * 4 - 2;
+            const y = Math.random() * 4 - 2;
+            const radius = x * x + y * y;
+            if (radius < 4) {
+                let z = Math.sqrt(4 - radius);
+                z = i % 2 == 0 ? z : -z;
+                i++;
                 // verts
                 const vert = new Vector3(x, y, z);
                 geometry.vertices.push(vert);
@@ -64,7 +101,7 @@ export class App {
         // points material
         const material = new PointsMaterial({
             color: 0xff0000,
-            size: 2,
+            size: 3,
             transparent: true,
             sizeAttenuation: false
         });
@@ -73,25 +110,13 @@ export class App {
         this.scene.add(this.points);
     }
 
-    private update(time: number): void {
+    private updatePoints(): void {
         const geometry = this.points.geometry as Geometry;
         const vertices = geometry.vertices;
         for (let i = 0; i < vertices.length; i++) {
             vertices[i].applyQuaternion(this.speeds[i]);
         }
         geometry.verticesNeedUpdate = true;
-    }
-
-    private animate(time: number): void {
-        const callback = this.animate.bind(this);
-        requestAnimationFrame(callback);
-        this.update(time);
-        this.renderer.render(this.scene, this.camera);
-    }
-
-    public run(): void {
-        this.init();
-        this.animate(0);
     }
 
 }
