@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "build": "npm run clean && npm run rollup && npm run copy",
-    "clean": "rm -rf dist",
-    "copy": "cp src/index.html dist/index.html",
+    "clean": "rm -rf dist/*",
+    "copy": "cp src/index.html dist/index.html && cp -Rf src/assets dist/",
     "browser-sync": "browser-sync start --config bs-config.js",
     "rollup": "rollup -c rollup.config.js",
     "rollup-watch": "npm run rollup -- --watch",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/beginor/rollup-starter-threejs#readme",
   "dependencies": {
-    "three": "^0.109.0"
+    "three": "^0.110.0"
   },
   "devDependencies": {
     "rollup": "^1.25.1",
