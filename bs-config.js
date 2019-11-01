@@ -2,7 +2,7 @@
 module.exports = {
     /**  files to watch */
     files: [
-        'dist/**/*.(html|js|css|png)'
+        'dist/**/*.(html|js|css|png|jpg)'
     ],
     server: {
         baseDir: 'dist',
