@@ -3,6 +3,7 @@ import {
     BoxBufferGeometry, Mesh, RawShaderMaterial, UniformsUtils, RedFormat,
     LinearFilter, FloatType, DoubleSide, OrthographicCamera
 } from 'three';
+import Stats from 'three/examples/jsm/libs/stats.module';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { WEBGL } from 'three/examples/jsm/WebGL';
 import { VolumeRenderShader1 } from 'three/examples/jsm/shaders/VolumeShader';
@@ -16,6 +17,7 @@ export class App {
     camera: OrthographicCamera;
     renderer: WebGLRenderer;
     controls: OrbitControls;
+    stats: Stats;
 
     private colormaps = {
         Gray: 'cm_gray.png',
@@ -69,6 +71,8 @@ export class App {
             this.container.clientHeight
         )
         this.container.appendChild(this.renderer.domElement);
+        this.stats = Stats();
+        this.container.appendChild(this.stats.dom);
         this.setupGui();
         //
         this.updateVolume();
@@ -87,6 +91,7 @@ export class App {
         requestAnimationFrame(callback);
         this.update(time);
         this.renderer.render(this.scene, this.camera);
+        this.stats.update();
         // console.log(time);
     }
 
