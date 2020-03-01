@@ -1,6 +1,7 @@
 import {
     Scene, PerspectiveCamera, WebGLRenderer, Color
 } from 'three';
+import Stats from 'three/examples/jsm/libs/stats.module';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export class App {
@@ -9,6 +10,7 @@ export class App {
     camera: PerspectiveCamera;
     renderer: WebGLRenderer;
     controls: OrbitControls;
+    stats: Stats;
 
     constructor(private container: HTMLElement) {
     }
@@ -37,6 +39,8 @@ export class App {
             this.container.clientHeight
         )
         this.container.appendChild(this.renderer.domElement);
+        this.stats = Stats();
+        this.container.appendChild(this.stats.dom);
     }
 
     private update(time: number): void {
@@ -52,6 +56,7 @@ export class App {
         requestAnimationFrame(callback);
         this.update(time);
         this.renderer.render(this.scene, this.camera);
+        this.stats.update();
     }
 
 }
