@@ -2,6 +2,7 @@ import {
     Scene, PerspectiveCamera, WebGLRenderer, Color, Points, Geometry, Vector3,
     Quaternion, PointsMaterial, SphereGeometry, MeshBasicMaterial, Mesh, TextureLoader
 } from 'three';
+import Stats from 'three/examples/jsm/libs/stats.module';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export class App {
@@ -10,6 +11,7 @@ export class App {
     camera: PerspectiveCamera;
     renderer: WebGLRenderer;
     controls: OrbitControls;
+    stats: Stats;
 
     points: Points;
     speeds: Quaternion[] = [];
@@ -42,6 +44,8 @@ export class App {
             this.container.clientHeight
         )
         this.container.appendChild(this.renderer.domElement);
+        this.stats = Stats();
+        this.container.appendChild(this.stats.dom);
         this.createEarth();
         this.createPoints();
     }
@@ -60,6 +64,7 @@ export class App {
         requestAnimationFrame(callback);
         this.update(time);
         this.renderer.render(this.scene, this.camera);
+        this.stats.update();
     }
 
     private createEarth() {
