@@ -37,7 +37,7 @@ export class App {
         this.renderer.setSize(
             this.container.clientWidth,
             this.container.clientHeight
-        )
+        );
         this.container.appendChild(this.renderer.domElement);
         this.stats = Stats();
         this.container.appendChild(this.stats.dom);
