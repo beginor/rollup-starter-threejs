@@ -1,22 +1,21 @@
-import rollup from 'rollup';
-import alias from 'rollup-plugin-alias';
-import commonjs from 'rollup-plugin-commonjs';
+import { rollup } from 'rollup';
+import alias from '@rollup/plugin-alias';
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
-import nodeResolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript2';
-import terser from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
 const production = !process.env.ROLLUP_WATCH;
 
-console.log('ROLLUP_WATCH: ' + process.env.ROLLUP_WATCH)
-
 export default {
-    input: './src/main.ts',
+    input: ['./src/main.ts'],
     output: {
-        format: 'iife',
-        file: './dist/bundle.js',
+        dir: 'dist',
+        chunkFileNames: "chunks/[name]-[hash].js",
+        format: 'es',
         sourcemap: !production
     },
     treeshake: production,
@@ -24,15 +23,15 @@ export default {
     plugins: [
         typescript({
             tsconfig: 'tsconfig.json',
-            cacheRoot: './dist',
-            clean: true
+            sourceMap: !production
         }),
-        css({ output: './dist/bundle.css' }),
+        css({ output: 'main.css' }),
         alias({}),
         nodeResolve({ mainFields: ['module', 'main'] }),
         commonjs({
             include: []
         }),
-        production && terser.terser({})
-    ]
+        production && terser({})
+    ],
+    preserveEntrySignatures: false
 }

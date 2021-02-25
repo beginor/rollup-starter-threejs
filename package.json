@@ -10,7 +10,7 @@
     "browser-sync": "browser-sync start --config bs-config.js",
     "rollup": "rollup -c rollup.config.js",
     "rollup-watch": "npm run rollup -- --watch",
-    "start": "npm run copy && concurrently \"npm run browser-sync\" \"npm run rollup-watch\"",
+    "start": "npm run clean && npm run copy && concurrently \"npm run browser-sync\" \"npm run rollup-watch\"",
     "test": "test"
   },
   "repository": {
@@ -28,16 +28,17 @@
   },
   "homepage": "https://github.com/beginor/rollup-starter-threejs#readme",
   "dependencies": {
+  	"tslib": "^2.1.0",
     "three": "^0.114.0"
   },
   "devDependencies": {
-    "rollup": "^1.31.1",
-    "rollup-plugin-alias": "^2.2.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-css-only": "^2.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.2.0",
-    "rollup-plugin-typescript2": "^0.26.0",
-    "typescript": "^3.7.5"
+    "rollup": "^2.39.1",
+    "@rollup/plugin-alias": "^3.1.2",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@rollup/plugin-typescript": "^8.2.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.2.2"
   }
 }
