@@ -9,23 +9,13 @@ export class App {
     /** app title */
     title: string = '';
 
-    /** @type {Scene | undefined} */
-    scene;
-    /** @type {PerspectiveCamera | undefined} */
-    camera;
-    /** @type {WebGLRenderer | undefined} */
-    renderer;
-    /** @type {OrbitControls | undefined} */
-    controls;
-    /** @type {Stats | undefined} */
-    stats;
+    scene!: Scene;
+    camera!: PerspectiveCamera;
+    renderer!: WebGLRenderer;
+    controls!: OrbitControls;
+    stats!: Stats;
 
-    /** @private @type {HTMLElement} */
-    container;
-
-    constructor(/** @private @type {HTMLElement} */ container) {
-        this.container = container;
-    }
+    constructor(private container: HTMLElement) { }
 
     /**
      * run the app.
@@ -35,8 +25,7 @@ export class App {
         this.animate(0);
     }
 
-    /** @private */
-    init() {
+    private init() {
         // Setup scene;
         this.scene = new Scene();
         this.scene.background = new Color("#000000");
@@ -64,12 +53,10 @@ export class App {
         this.container.appendChild(this.stats.dom);
     }
 
-    /** @private */
-    update(/** @type {number} */ time) {
+    private update(time: number) {
     }
 
-    /** @private */
-    animate(/** @type {number} */ time) {
+    private animate(time: number) {
         if (!this.renderer) {
             return;
         }
