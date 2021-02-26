@@ -6,8 +6,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export class App {
 
-    /** @type {string} app title */
-    title = '';
+    /** app title */
+    title: string = '';
 
     /** @type {Scene | undefined} */
     scene;
