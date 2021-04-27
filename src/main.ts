@@ -1,9 +1,8 @@
-import { App } from './app/app'
-
 import './main.css';
 
-const appEl = document.getElementById('app');
-if (!!appEl) {
-    const app = new App(appEl);
+import('./app/app').then(m => {
+    const app = new m.App(document.getElementById('app'));
     app.run();
-}
+}).catch(ex => {
+    console.error(ex);
+});
