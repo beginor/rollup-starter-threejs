@@ -22,7 +22,7 @@ export default [
     watch: { buildDelay: 0 },
     treeshake: production,
     external: [
-      'tslib', 'bootstrap', '@popperjs/core'
+      'tslib', 'bootstrap', '@popperjs/core', 'three', /three\/.*/
     ],
     plugins: [
       typescript({ tsconfig: 'tsconfig.json', sourceMap: !production }),
