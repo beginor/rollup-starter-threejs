@@ -4,6 +4,8 @@ import {
 import Stats from 'three/examples/jsm/libs/stats.module';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+import './app.scss';
+
 export class App {
 
     /** app title */
