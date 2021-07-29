@@ -1,16 +1,13 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
+@import './variables';
 
-#app {
-  width: 100%;
-  height: 100%;
-  background-color: #ccc;
-  padding: 0;
-  margin: 0;
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+html, body {
+  @include full-width-height();
+  @include no-margin-padding();
   overflow: hidden;
+}
+#app {
+  background-color: $body-bg;
+  @include full-width-height();
 }
