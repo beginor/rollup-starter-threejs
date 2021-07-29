@@ -1,36 +1,36 @@
 import {
     Scene, PerspectiveCamera, WebGLRenderer, Color
 } from 'three';
-import Stats from 'three/examples/jsm/libs/stats.module';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import Stats from 'three/examples/jsm/libs/stats.module.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import './app.scss';
 
 export class App {
 
     /** app title */
-    title: string = '';
+    public title = '';
 
-    scene!: Scene;
-    camera!: PerspectiveCamera;
-    renderer!: WebGLRenderer;
-    controls!: OrbitControls;
-    stats!: Stats;
+    private scene!: Scene;
+    private camera!: PerspectiveCamera;
+    private renderer!: WebGLRenderer;
+    private controls!: OrbitControls;
+    private stats!: Stats;
 
     constructor(private container: HTMLElement) { }
 
     /**
      * run the app.
      */
-    run() {
+    public run(): void {
         this.init();
         this.animate(0);
     }
 
-    private init() {
+    private init(): void {
         // Setup scene;
         this.scene = new Scene();
-        this.scene.background = new Color("#000000");
+        this.scene.background = new Color('#000000');
         // assign scene to window for debug;
         Object.assign(window, { _scene: this.scene })
         // Setup camera;
@@ -55,10 +55,10 @@ export class App {
         this.container.appendChild(this.stats.dom);
     }
 
-    private update(time: number) {
+    private update(time: number): void {
     }
 
-    private animate(time: number) {
+    private animate(time: number): void {
         if (!this.renderer) {
             return;
         }
