@@ -16,3 +16,7 @@ npx rollup -c rollup/rollup.popperjs.js
 # three.js
 mkdir dist/libs/three
 cp -v node_modules/three/build/three.module.js dist/libs/three
+npx terser --comments false --module -o dist/libs/three/three.module.min.js dist/libs/three/three.module.js
+mkdir dist/libs/three/examples
+cp -rv node_modules/three/examples/fonts dist/libs/three/examples
+cp -rv node_modules/three/examples/jsm dist/libs/three/examples

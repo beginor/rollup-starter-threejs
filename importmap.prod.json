@@ -2,6 +2,8 @@
   "imports": {
     "tslib": "./dist/libs/tslib/tslib.min.js",
     "bootstrap": "./dist/libs/bootstrap/bootstrap.esm.min.js",
-    "@popperjs/core": "./dist/libs/@popperjs/core.min.js"
+    "@popperjs/core": "./dist/libs/@popperjs/core.min.js",
+    "three": "./dist/libs/three/three.module.min.js",
+    "three/": "./dist/libs/three/"
   }
 }
